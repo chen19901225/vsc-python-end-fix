@@ -1,0 +1,59 @@
+{
+    "name": "python-end-fix",
+    "displayName": "python-end-fix",
+    "description": "python end strange whitespace fix",
+    "version": "0.0.1",
+    "publisher": "cqh",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/chen19901225/vsc-python-end-fix"
+    },
+    "bugs": {
+        "url": "https://github.com/chen19901225/vsc-python-end-fix/issues"
+      },
+    "engines": {
+        "vscode": "^1.32.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "format", "python",
+        "End", "whitespace"
+    ],
+    "activationEvents": [
+        "onLanguage:python",
+        "onLanguage:jupyter",
+        "onDebugResolve:python",
+        "onCommand:python-end-fix.new-end"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "keybindings": [
+			{
+				"command": "python-end-fix.new-end",
+				"key": "End",
+				"when": "editorTextFocus && !editorHasSelection && editorLangId == python && !suggestWidgetVisible"
+			}
+		],
+        "commands": [
+            {
+                "command": "python-end-fix.new-end",
+                "title": "NewEnd"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
