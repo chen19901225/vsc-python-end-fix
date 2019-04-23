@@ -1,8 +1,8 @@
 {
-    "name": "python-end-fix",
-    "displayName": "python-end-fix",
-    "description": "python end strange whitespace fix",
-    "version": "0.0.1",
+    "name": "end-fix",
+    "displayName": "end-fix",
+    "description": "end strange whitespace fix",
+    "version": "0.0.6",
     "publisher": "cqh",
     "repository": {
         "type": "git",
@@ -18,13 +18,11 @@
         "Other"
     ],
     "keywords": [
-        "format", "python",
+        "format", 
         "End", "whitespace"
     ],
     "activationEvents": [
-        "onLanguage:python",
-        "onLanguage:jupyter",
-        "onDebugResolve:python",
+        "*",
         "onCommand:python-end-fix.new-end"
     ],
     "main": "./out/src/extension",
@@ -33,7 +31,7 @@
 			{
 				"command": "python-end-fix.new-end",
 				"key": "End",
-				"when": "editorTextFocus && !editorHasSelection && editorLangId == python && !suggestWidgetVisible"
+				"when": "editorTextFocus && !editorHasSelection "
 			}
 		],
         "commands": [
