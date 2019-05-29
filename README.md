@@ -37,6 +37,9 @@ Active this extension from `OnLanguage:python` to `*`
 ### 0.0.4
 remove `!suggestWidgetVisible` in `when`
 
+### 0.0.7
+add keybind `Alt` + `L`, to call select current line
+
 
 
 

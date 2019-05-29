@@ -45,7 +45,18 @@ export function activate(context: vscode.ExtensionContext) {
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     let disposable = vscode.commands.registerTextEditorCommand('python-end-fix.new-end', newEndAction);
+    let selectCurrentLineDiposable = vscode.commands.registerTextEditorCommand("python-end-fix.select-current-line", (textEditor, edit) => {
+        const editor = vscode.window.activeTextEditor;
+        const position = editor.selection.active;
+        const currentLine = editor.document.lineAt(position.line);
 
+
+        // var newPosition = position.with(position.line, currentLine.firstNonWhitespaceCharacterIndex);
+        let newPosition= new vscode.Position(position.line, currentLine.firstNonWhitespaceCharacterIndex)
+        var newSelection = new vscode.Selection(newPosition, new vscode.Position(position.line, currentLine.range.end.character));
+        editor.selection = newSelection;
+    })
+    context.subscriptions.push(disposable);
     context.subscriptions.push(disposable);
 }
 

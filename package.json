@@ -2,7 +2,7 @@
     "name": "end-fix",
     "displayName": "end-fix",
     "description": "end strange whitespace fix",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "publisher": "cqh",
     "repository": {
         "type": "git",
@@ -32,12 +32,21 @@
 				"command": "python-end-fix.new-end",
 				"key": "End",
 				"when": "editorTextFocus && !editorHasSelection "
-			}
+            },
+            {
+                "command": "python-end-fix.select-current-line",
+                "key": "Alt+L",
+                "when": "editorTextFocus"
+            }
 		],
         "commands": [
             {
                 "command": "python-end-fix.new-end",
-                "title": "NewEnd"
+                "title": "python-end-fix.new-end"
+            },
+            {
+                "command": "python-end-fix.select-current-line",
+                "title": "python-end-fix: select current line"
             }
         ]
     },
