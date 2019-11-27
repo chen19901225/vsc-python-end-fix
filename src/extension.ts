@@ -12,9 +12,9 @@ function newEndAction(
     args: any[]
 ) {
     const position = textEditor.selection.active;
-    console.log("python-end-fix", "position:", position, '[end');
+    // console.log("python-end-fix", "position:", position, '[end');
     const origin_line = textEditor.document.lineAt(position.line);
-    console.log("python-end-fix","origin_line:", origin_line.text, '[end');
+    // console.log("python-end-fix","origin_line:", origin_line.text, '[end');
     const prefix = origin_line.text.substring(0, position.character);
     const suffix = ('1'+origin_line.text.substring(position.character)).trim().substr(1);
     const formated_line = prefix + suffix;

@@ -10,7 +10,7 @@
     },
     "bugs": {
         "url": "https://github.com/chen19901225/vsc-python-end-fix/issues"
-      },
+    },
     "engines": {
         "vscode": "^1.32.0"
     },
@@ -18,8 +18,9 @@
         "Other"
     ],
     "keywords": [
-        "format", 
-        "End", "whitespace"
+        "format",
+        "End",
+        "whitespace"
     ],
     "activationEvents": [
         "*",
@@ -28,17 +29,17 @@
     "main": "./out/src/extension",
     "contributes": {
         "keybindings": [
-			{
-				"command": "python-end-fix.new-end",
-				"key": "End",
-				"when": "editorTextFocus && !editorHasSelection "
+            {
+                "command": "python-end-fix.new-end",
+                "key": "End",
+                "when": "editorTextFocus && !editorHasSelection "
             },
             {
                 "command": "python-end-fix.select-current-line",
                 "key": "Alt+L",
                 "when": "editorTextFocus"
             }
-		],
+        ],
         "commands": [
             {
                 "command": "python-end-fix.new-end",
