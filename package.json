@@ -2,7 +2,7 @@
     "name": "end-fix",
     "displayName": "end-fix",
     "description": "end strange whitespace fix",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "publisher": "cqh",
     "repository": {
         "type": "git",
