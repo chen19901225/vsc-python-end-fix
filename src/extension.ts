@@ -2,6 +2,10 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { Settings } from './end/settings';
+import { APPNAME } from './end/consts';
+import {Logger} from "./end/logger";
+import { EndLoader } from './end/loader';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -44,20 +48,26 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerTextEditorCommand('python-end-fix.new-end', newEndAction);
-    let selectCurrentLineDiposable = vscode.commands.registerTextEditorCommand("python-end-fix.select-current-line", (textEditor, edit) => {
-        const editor = vscode.window.activeTextEditor;
-        const position = editor.selection.active;
-        const currentLine = editor.document.lineAt(position.line);
+    // let disposable = vscode.commands.registerTextEditorCommand('python-end-fix.new-end', newEndAction);
+    // let selectCurrentLineDiposable = vscode.commands.registerTextEditorCommand("python-end-fix.select-current-line", (textEditor, edit) => {
+    //     const editor = vscode.window.activeTextEditor;
+    //     const position = editor.selection.active;
+    //     const currentLine = editor.document.lineAt(position.line);
 
 
-        // var newPosition = position.with(position.line, currentLine.firstNonWhitespaceCharacterIndex);
-        let newPosition= new vscode.Position(position.line, currentLine.firstNonWhitespaceCharacterIndex)
-        var newSelection = new vscode.Selection(newPosition, new vscode.Position(position.line, currentLine.range.end.character));
-        editor.selection = newSelection;
-    })
-    context.subscriptions.push(disposable);
-    context.subscriptions.push(disposable);
+    //     // var newPosition = position.with(position.line, currentLine.firstNonWhitespaceCharacterIndex);
+    //     let newPosition= new vscode.Position(position.line, currentLine.firstNonWhitespaceCharacterIndex)
+    //     var newSelection = new vscode.Selection(newPosition, new vscode.Position(position.line, currentLine.range.end.character));
+    //     editor.selection = newSelection;
+    // })
+    // context.subscriptions.push(disposable);
+    // context.subscriptions.push(disposable);
+
+    let logger = new Logger(APPNAME);
+    let settings = new Settings(logger);
+    let loader = new EndLoader(logger, settings);
+    loader.activate(context.subscriptions);
+
 }
 
 // this method is called when your extension is deactivated

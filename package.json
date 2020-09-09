@@ -23,11 +23,71 @@
         "whitespace"
     ],
     "activationEvents": [
-        "*",
-        "onCommand:python-end-fix.new-end"
+        "*"
     ],
     "main": "./out/src/extension",
     "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "Trailing End Spaces Configuration",
+            "properties": {
+                "python-end-fix.logLevel": {
+                    "type": "string",
+                    "enum": [
+                        "none",
+                        "log",
+                        "info",
+                        "warn",
+                        "error"
+                    ],
+                    "default": "warn",
+                    "description": "Controls the verbosity of logging. Logs can be seen in the console by opening the dev tools. `log` is the most verbose and `error` will only show critical errors."
+                },
+                "python-end-fix.regexp": {
+                    "type": "string",
+                    "default": "[ \t]+",
+                    "description": "By default, only simple spaces and tabs are matched as \"trailing spaces\"."
+                },
+                "python-end-fix.liveMatching": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "By default, Trailing Spaces is \"live\". It means the trailing spaces regions will be matched in the background, and highlighted if a color scope is defined, when the document is opened and edited. Set to false to disable live matching and highlighting (the deletion command remains available, so-called \"lazy matching\")."
+                },
+                "python-end-fix.extListAllowed": {
+                    "type": "array",
+                    "default": [
+                        ".py",
+                        ".rst",
+                        ".html",
+                        ".js",
+                        ".ts",
+                        ".json",
+                        ".j2"
+                    ],
+                    "description": "file extension allowed"
+                },
+                "python-end-fix.trimOnSave": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Controls whether trailing spaces are trimmed automatically when saving a file."
+                },
+                "python-end-fix.showStatusBarMessage": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "By default, trailing space deletions will be communicated through a status bar message. Set to false to disable these messages."
+                },
+                "python-end-fix.backgroundColor": {
+                    "type": "string",
+                    "default": "rgba(255,0,0,0.3)",
+                    "description": "Controls the background color of the trailing space decoration."
+                },
+                "python-end-fix.borderColor": {
+                    "type": "string",
+                    "default": "rgba(255,100,100,0.15)",
+                    "description": "Controls the color of the border around the trailing space decoration."
+                }
+            }
+        },
         "keybindings": [
             {
                 "command": "python-end-fix.new-end",
@@ -42,12 +102,12 @@
         ],
         "commands": [
             {
-                "command": "python-end-fix.new-end",
-                "title": "python-end-fix.new-end"
+                "command": "python-end-fix.highlight",
+                "title": "python-end-fix.highlight"
             },
             {
-                "command": "python-end-fix.select-current-line",
-                "title": "python-end-fix: select current line"
+                "command": "python-end-fix.delete",
+                "title": "python-end-fix: delete"
             }
         ]
     },
@@ -58,10 +118,10 @@
         "test": "node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
-        "mocha": "^2.3.3",
+        "@types/mocha": "^2.2.32",
         "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+        "mocha": "^8.1.3",
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0"
     }
 }
