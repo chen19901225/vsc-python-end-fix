@@ -107,6 +107,14 @@
         ],
         "commands": [
             {
+                "command": "python-end-fix.new-end",
+                "title": "python-end-fix.new-end"
+            },
+            {
+                "command": "python-end-fix.select-current-line",
+                "title": "python-end-fix.select-current-line"
+            },
+            {
                 "command": "python-end-fix.highlight",
                 "title": "python-end-fix.highlight"
             },
