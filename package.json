@@ -66,9 +66,14 @@
                     ],
                     "description": "file extension allowed"
                 },
+                "python-end-fix.includeEmptyLines": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "By default, empty lines are cleared as well when calling the deletion command. Set to false to ignore empty lines upon deletion."
+                  },
                 "python-end-fix.trimOnSave": {
                     "type": "boolean",
-                    "default": false,
+                    "default": true,
                     "description": "Controls whether trailing spaces are trimmed automatically when saving a file."
                 },
                 "python-end-fix.showStatusBarMessage": {
@@ -89,17 +94,18 @@
             }
         },
         "keybindings": [
-            {
-                "command": "python-end-fix.new-end",
-                "key": "End",
-                "when": "editorTextFocus && !editorHasSelection "
+			{
+				"command": "python-end-fix.new-end",
+				"key": "End",
+				"when": "editorTextFocus && !editorHasSelection "
             },
             {
                 "command": "python-end-fix.select-current-line",
                 "key": "Alt+L",
                 "when": "editorTextFocus"
             }
-        ],
+		],
+    
         "commands": [
             {
                 "command": "python-end-fix.highlight",

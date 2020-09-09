@@ -130,8 +130,8 @@ export class EndRunner {
             let offendingRanges: vscode.Range[] = [];
             let regexp: string = "(" + this.settings.regexp + ")$"; // 原来是加了()$
             let noEmptyLinesRegexp: string = "\\S" + regexp; // 不是空行的regex
-            // let offendingRangesRegexp: RegExp = new RegExp(this.settings.includeEmptyLines ? regexp : noEmptyLinesRegexp, "gm");
-            let offendingRangesRegexp: RegExp = new RegExp(noEmptyLinesRegexp, "gm");
+            let offendingRangesRegexp: RegExp = new RegExp(this.settings.includeEmptyLines ? regexp : noEmptyLinesRegexp, "gm");
+            //let offendingRangesRegexp: RegExp = new RegExp(noEmptyLinesRegexp, "gm");
             let documentText: string = document.getText();
 
             let match: RegExpExecArray | null;

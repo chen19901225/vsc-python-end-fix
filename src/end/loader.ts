@@ -43,7 +43,7 @@ export class EndLoader {
         // 第三个应该是this把
         subscriptions.push(
             vscode.commands.registerTextEditorCommand(`${APPNAME}.delete`, this.endRunner.delete, this.endRunner),
-            vscode.commands.registerTextEditorCommand('${APPNAME}.highlight', this.endRunner.highlight, this.endRunner)
+            vscode.commands.registerTextEditorCommand(`${APPNAME}.highlight`, this.endRunner.highlight, this.endRunner)
         )
     }
 

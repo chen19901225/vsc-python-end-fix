@@ -9,6 +9,7 @@ export class Settings {
     regexp!: string; // [ \t]+ 这个怎么匹配最后的东西呢？
     liveMatching!: boolean;
     deleteModifiedLinesOnly!: boolean;
+    includeEmptyLines: boolean;
     extListAllowed: string[];
     trimOnSave!: boolean;
     showStatusBarMessage!: boolean;
@@ -26,6 +27,7 @@ export class Settings {
         let config: vscode.WorkspaceConfiguration = vscode.workspace.getConfiguration(APPNAME);
         this.logLevel = LogLevel[config.get<keyof typeof LogLevel>('logLevel')]; // keyof typeof LogLevel?
         this.regexp = config.get<string>('regexp');
+        this.includeEmptyLines = config.get<boolean>("includeEmptyLines");
         this.liveMatching = config.get<boolean>('liveMatching');
         this.trimOnSave = config.get<boolean>('trimOnSave');
         this.extListAllowed = config.get<string[]>("extListAllowed") || [];
@@ -44,9 +46,7 @@ export class Settings {
         config.update('highlightCurrentLine', undefined, true);
         config.update('regexp', undefined, true);
         config.update('liveMatching', undefined, true);
-        config.update('deleteModifiedLinesOnly', undefined, true);
-        config.update('syntaxIgnore', undefined, true);
-        config.update('schemeIgnore', undefined, true);
+        config.update("extListAllowed", undefined, true);
         config.update('trimOnSave', undefined, true);
         config.update('showStatusBarMessage', undefined, true);
         config.update('backgroundColor', undefined, true);
