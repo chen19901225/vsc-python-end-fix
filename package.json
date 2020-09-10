@@ -73,7 +73,7 @@
                 },
                 "python-end-fix.trimOnSave": {
                     "type": "boolean",
-                    "default": true,
+                    "default": false,
                     "description": "Controls whether trailing spaces are trimmed automatically when saving a file."
                 },
                 "python-end-fix.showStatusBarMessage": {
